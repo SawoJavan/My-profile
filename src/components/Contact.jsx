@@ -6,10 +6,11 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import emailjs from 'emailjs-com';
 const Contact=()=>{
     const navigate = useNavigate();
-    const [name,setName]=useState('');
-    const [email,setEmail]=useState('');
+    const [from_name,setName]=useState('');
+    const [from_email,setEmail]=useState('');
     const [message,setMessage]=useState('');
     const [nameValid,setNameValid]=useState(true);
     const [emailValid,setEmailValid]=useState(true);
@@ -28,11 +29,11 @@ const Contact=()=>{
     };
     const handleSubmit=(e)=>{
         e.preventDefault();
-        if(name.trim().length===0){
+        if(from_name.trim().length===0){
             setNameValid(false);
             return;
         };
-        if(email.trim().length===0){
+        if(from_email.trim().length===0){
             setEmailValid(false);
             return;
         };
@@ -40,6 +41,25 @@ const Contact=()=>{
             setMessageValid(false);
             return;
         }
+        let to_name='Javan'
+        // EmailJS service details
+        const serviceID = "service_6xat2xh";
+        const templateID = "template_13bv5rb";
+        const publicKey = "1kMgniQlsFBDxEdco";
+
+    // Send email using EmailJS
+      emailjs.send(serviceID, templateID, from_email,from_name,message,to_name, publicKey)
+      .then(() => {
+        alert("Message sent successfully!");
+        setEmail('');
+        setMessage('');
+        setName('');
+      })
+      .catch((error) => {
+        console.error("Email sending error:", error);
+        alert("Failed to send message. Please try again.");
+      });
+  
         navigate("/resume");
 
     }
@@ -65,9 +85,9 @@ const Contact=()=>{
                     <Box>
                         <Typography variant="h5" sx={{color:'white',fontWeight:'bold',padding:'1rem'}} >FOLLOW ME</Typography>
                         <Typography variant="h6" sx={{color:'white',fontWeight:'bold',paddingLeft:'1rem'}}>
-                           <Link to='' ><EmailIcon sx={{ fontSize: 20 ,paddingRight:0.2,paddingLeft:0.2,color:'white'}}/></Link>
-                           <Link to=''><GitHubIcon sx={{ fontSize: 20,paddingRight:0.2,paddingLeft:0.2,color:'white'}}/></Link>
-                           <Link to='https://www.linkedin.com/in/javan-sawo-2a8a91249'><LinkedInIcon sx={{ fontSize: 20,paddingRight:0.2,paddingLeft:0.2,color:'white'}}/></Link>
+                           <Link to='' ><EmailIcon sx={{ fontSize: 20 ,paddingRight:2.5,paddingLeft:0.6,color:'white'}}/></Link>
+                           <Link to='https://github.com/SawoJavan'><GitHubIcon sx={{ fontSize: 20,paddingRight:2.5,paddingLeft:0.4,color:'white'}}/></Link>
+                           <Link to='https://www.linkedin.com/in/javan-sawo-2a8a91249'><LinkedInIcon sx={{ fontSize: 20,paddingRight:0.4,paddingLeft:0.4,color:'white'}}/></Link>
                         </Typography>
                     </Box>
                 </Grid2>
@@ -76,8 +96,8 @@ const Contact=()=>{
                   <Box sx={{ p: 3 }}>
         <Box onSubmit={handleSubmit} component='form' 
         sx={{
-            backgroundColor: "transparent", // Semi-transparent white
-            backdropFilter: "blur(10px)", // Frosted glass effect
+            backgroundColor: "transparent", 
+            backdropFilter: "blur(10px)", 
             
           }}
          >
@@ -88,7 +108,7 @@ const Contact=()=>{
             label="Name"
             name="name"
             variant="filled"
-            value={name}
+            value={from_name}
             error={!nameValid}
             helperText={!nameValid && 'Enter name'}
             onChange={handleName}
@@ -102,7 +122,7 @@ const Contact=()=>{
             name="email"
             type="email"
             variant="filled"
-            value={email}
+            value={from_email}
             error={!emailValid}
             helperText={!emailValid && 'Enter email'}
             onChange={handleEmail}

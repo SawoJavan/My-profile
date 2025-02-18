@@ -1,4 +1,5 @@
 import { Box,Typography,Grid2,Button,Stack,Divider } from "@mui/material";
+import CV from '../assets/javanAwelo_cv.pdf';
 export function About (){
     return(
         <Box margin={0} sx={{backgroundColor:'rgba(10, 10, 10, 1)', width:'100%', margin:'0'}}>
@@ -44,7 +45,19 @@ export function About (){
                <Box sx={{height:'1px', backgroundColor:'rgba(220, 220, 220, 1)', width:'100%', marginBottom:'0.8rem'}}> </Box>
                </Box>
                <Box >
-                   <Button variant="outlined" sx={{backgroundColor: "transparent",borderBlockColor:'grey', color:'white', padding:'0.8rem',borderRadius:'1.2rem'}}> Download CV</Button>
+                   <Button variant="outlined" 
+
+                   sx={{backgroundColor: "transparent",
+                   borderBlockColor:'grey', 
+                   color:'white', 
+                   padding:'0.8rem',
+                   borderRadius:'1.2rem'}}
+                   href={CV}
+                   download="Sawo_Javan_CV.pdf" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   > 
+                    Download CV</Button>
                </Box>
            </Grid2>
            </Grid2>

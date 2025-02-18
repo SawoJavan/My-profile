@@ -59,7 +59,8 @@ const Home=()=>{
                 <Typography variant="h5" sx={{color:'white',textAlign:'center'}}>Based in Kisumu, Kenya</Typography>
              </Box>
              <Box sx={{marginLeft:'45%',marginTop:'2%'}}>
-             <Button variant='outlined' sx={{backgroundColor: "transparent",borderBlockColor:'grey', color:'white', padding:'0.8rem',borderRadius:'1.2rem'}} component={Link} to='/about'>Hire Me</Button>
+             <Button variant='outlined' sx={{backgroundColor: "transparent",borderBlockColor:'grey', 
+                color:'white', padding:'0.8rem',borderRadius:'1.2rem'}} component={Link} to='/about'>Hire Me</Button>
              </Box>
           
         </Box>
