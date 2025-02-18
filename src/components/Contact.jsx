@@ -6,7 +6,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import emailjs from 'emailjs-com';
+//import emailjs from 'emailjs-com';
 const Contact=()=>{
     const navigate = useNavigate();
     const [from_name,setName]=useState('');
@@ -41,24 +41,24 @@ const Contact=()=>{
             setMessageValid(false);
             return;
         }
-        let to_name='Javan'
-        // EmailJS service details
-        const serviceID = "service_6xat2xh";
-        const templateID = "template_13bv5rb";
-        const publicKey = "1kMgniQlsFBDxEdco";
+        // let to_name='Javan'
+        // // EmailJS service details
+        // const serviceID = "service_6xat2xh";
+        // const templateID = "template_13bv5rb";
+        // const publicKey = "1kMgniQlsFBDxEdco";
 
     // Send email using EmailJS
-      emailjs.send(serviceID, templateID, from_email,from_name,message,to_name, publicKey)
-      .then(() => {
-        alert("Message sent successfully!");
-        setEmail('');
-        setMessage('');
-        setName('');
-      })
-      .catch((error) => {
-        console.error("Email sending error:", error);
-        alert("Failed to send message. Please try again.");
-      });
+      // emailjs.send(serviceID, templateID, from_email,from_name,message,to_name, publicKey)
+      // .then(() => {
+      //   alert("Message sent successfully!");
+      //   setEmail('');
+      //   setMessage('');
+      //   setName('');
+      // })
+      // .catch((error) => {
+      //   console.error("Email sending error:", error);
+      //   alert("Failed to send message. Please try again.");
+      // });
   
         navigate("/resume");
 
